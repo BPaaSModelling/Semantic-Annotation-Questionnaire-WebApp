@@ -4,9 +4,8 @@
 import {AnswerModel} from './answer.model';
 
 export class CloudServicePropertyModel {
-
-    propertyLabel: string;
     propertyURI: string;
+    propertyLabel: string;
     answerList: AnswerModel[];
     answerDatatype: string;
     givenAnswerList: string[];

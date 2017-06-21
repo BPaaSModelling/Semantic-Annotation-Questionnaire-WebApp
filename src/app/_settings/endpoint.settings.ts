@@ -13,6 +13,7 @@ export class EndpointSettings {
   private static DRILLDOWN      : string = '/drilldown';
   private static SEARCH         : string = '/search?';
   private static INSERT         : string = '/insert?';
+  private static ADDCLOUDSERVICE: string = '/insert/addcs';
 
   public static getQuestionnaireEndpoint() :string {
     return EndpointSettings.ENDPOINT + EndpointSettings.QUESTIONNAIRE;
@@ -34,7 +35,9 @@ export class EndpointSettings {
     return EndpointSettings.ENDPOINT + EndpointSettings.INSERT;
   }
 
-
+  public static getAddCloudServiceEndpoint() :string {
+    return EndpointSettings.ENDPOINT + EndpointSettings.ADDCLOUDSERVICE;
+  }
 
 
 }

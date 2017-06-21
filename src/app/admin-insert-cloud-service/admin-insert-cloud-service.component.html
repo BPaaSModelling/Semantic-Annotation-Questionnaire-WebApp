@@ -1,6 +1,40 @@
 <md-sidenav-container fullscreen>
-
-
-
-
+    <h2>Insert a new CloudService</h2>
+    <br />
+    <form>
+        <b>GENERAL</b><br />
+        <label>
+            <span>Insert the name of the Cloud Service:</span>
+        <md-input-container>
+            <input mdInput [(ngModel)]="cloudService.csName"
+                   name="csName"
+                   placeholder="" value=""
+                   required>
+        </md-input-container>
+        </label>
+        <br />
+        <label>
+            <span>Insert the URI:</span>
+            <md-input-container>
+                <input mdInput [(ngModel)]="cloudService.csUri"
+                       name="csUri"
+                       placeholder="" value=""
+                       required>
+            </md-input-container>
+        </label>
+        <br /><hr />
+        <b>PERFORMANCE</b><br />
+        <label>
+            <span>Insert the Availability in %:</span>
+            <md-input-container>
+                <input mdInput [(ngModel)]="cloudService.csAvailability"
+                       type="number"
+                       name="csAvailability"
+                       placeholder="" value=""
+                       required>
+            </md-input-container>
+        </label>
+        <br /><br />
+        <button md-raised-button (click)="submitForm()" [disabled]="cloudService.csName==null || cloudService.csUri==null || cloudService.csAvailability==null">Create new Cloud Service</button>
+    </form>
 </md-sidenav-container>
