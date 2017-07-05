@@ -19,8 +19,13 @@ import { SingleselectionQuestionComponent } from './types/singleselection-questi
 import { ValueinsertQuestionComponent } from './types/valueinsert-question/valueinsert-question.component';
 import { MultiselectQuestionComponent } from './types/multiselect-question/multiselect-question.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {AdminInsertCloudServiceComponent} from './admin-insert-cloud-service/admin-insert-cloud-service.component';
+import {AdminInsertCloudServiceComponent} from './admin-insert-cloudservice/admin-insert-cloud-service.component';
 import { UserQuestionnaireComponent } from './user-questionnaire/user-questionnaire.component';
+import {InsertCSService} from './admin-insert-cloudservice.service';
+import { SearchInsertComponent } from './insert-types/search-insert/search-insert.component';
+import { MultiselectInsertComponent } from './insert-types/multiselect-insert/multiselect-insert.component';
+import { SingleselectInsertComponent } from './insert-types/singleselect-insert/singleselect-insert.component';
+import { ValueInsertComponent } from './insert-types/value-insert/value-insert.component';
 
 const appRoutes: Routes = [
   //{ path: '', component: HomeComponent },
@@ -41,6 +46,10 @@ const appRoutes: Routes = [
     MultiselectQuestionComponent,
     AdminInsertCloudServiceComponent,
     UserQuestionnaireComponent,
+    SearchInsertComponent,
+    MultiselectInsertComponent,
+    SingleselectInsertComponent,
+    ValueInsertComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +68,10 @@ const appRoutes: Routes = [
     JsonpModule,
     ReactiveFormsModule
   ],
-  providers: [QuestionnaireService],
+  providers: [
+    QuestionnaireService,
+    InsertCSService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [],
 })

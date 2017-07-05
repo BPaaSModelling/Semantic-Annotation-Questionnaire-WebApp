@@ -1,0 +1,11 @@
+<md-card-content>
+  <md-radio-group class="radio-group">
+    <div *ngFor="let aItem of element.answerList">
+      <md-radio-button class="radio-button"
+                       [value]="aItem.answerID"
+                       (click)="handleSingleSelect(aItem.answerID)">
+        {{aItem.answerLabel}}
+      </md-radio-button>
+    </div>
+  </md-radio-group>
+</md-card-content>

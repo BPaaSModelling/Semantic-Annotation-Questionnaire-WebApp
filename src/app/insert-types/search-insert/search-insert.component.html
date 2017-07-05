@@ -1,0 +1,11 @@
+<md-card-content>
+  <md-input-container>
+    <input mdInput placeholder="search" (keyup)="search(answerLabel)" [(ngModel)]="answerLabel" required>
+  </md-input-container>
+  <md-nav-list>
+    <md-list-item *ngFor="let item of (insertService.searchResults$ | async)">
+      <a md-line (click)="handleSearchSelect(item)">{{ item.label }}</a>
+    </md-list-item>
+  </md-nav-list>
+
+</md-card-content>

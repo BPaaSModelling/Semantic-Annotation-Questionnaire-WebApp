@@ -1,0 +1,37 @@
+<md-sidenav-container fullscreen>
+    <h2>Insert a new Cloud Service</h2>
+    <br />
+    <div *ngFor="let domain of (insertService.domain$ | async)">
+        <md-card-header>
+            <div align="center"><md-card-title>{{domain}}</md-card-title></div>
+        </md-card-header>
+            <md-card-content>
+                <md-list>
+    <div *ngFor="let element of (insertService.csField$ | async)">
+        <ul>
+        <div *ngIf="(domain == element.domain); then thenBlock"></div>
+            <ng-template #thenBlock><md-list-item><b><li>{{element.propertyLabel}}</li></b>: </md-list-item>
+
+            <app-search-insert *ngIf="element.typeOfAnswer==insertService.SEARCHSELECTION" [element]="element"></app-search-insert>
+
+            <app-multiselect-insert *ngIf="element.typeOfAnswer==insertService.MULTISELECTION" [element]="element"></app-multiselect-insert>
+
+            <app-singleselect-insert *ngIf="element.typeOfAnswer==insertService.SINGLESELECTION" [element]="element"></app-singleselect-insert>
+
+            <app-value-insert *ngIf="element.typeOfAnswer==insertService.VALUEINSERT" [element]="element"></app-value-insert>
+
+        </ng-template>
+        </ul>
+    </div>
+                </md-list>
+            </md-card-content>
+        <br />
+        <hr />
+    </div>
+    <br />
+    <br />
+    <md-card-actions>
+        <div align="center"><button md-raised-button (click)="createCS()">Create new Cloud Service</button></div>
+    </md-card-actions>
+    <br />
+</md-sidenav-container>

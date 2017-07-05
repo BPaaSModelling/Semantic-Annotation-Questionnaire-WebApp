@@ -1,0 +1,7 @@
+<md-card-content>
+  <div *ngFor="let aItem of element.answerList">
+    <p>
+      <md-checkbox (click)="handleMultiSelect(aItem.answerID)">{{aItem.answerLabel}}</md-checkbox>
+    </p>
+  </div>
+</md-card-content>
