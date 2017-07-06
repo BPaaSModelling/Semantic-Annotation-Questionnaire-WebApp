@@ -12,13 +12,13 @@
         <div *ngIf="(domain == element.domain); then thenBlock"></div>
             <ng-template #thenBlock><md-list-item><b><li>{{element.propertyLabel}}</li></b>: </md-list-item>
 
-            <app-search-insert *ngIf="element.typeOfAnswer==insertService.SEARCHSELECTION" [element]="element"></app-search-insert>
+            <app-search-insert *ngIf="element.typeOfAnswer == insertService.SEARCHSELECTION" [element]="element"></app-search-insert>
 
-            <app-multiselect-insert *ngIf="element.typeOfAnswer==insertService.MULTISELECTION" [element]="element"></app-multiselect-insert>
+            <app-multiselect-insert *ngIf="element.typeOfAnswer == insertService.MULTISELECTION" [element]="element"></app-multiselect-insert>
 
-            <app-singleselect-insert *ngIf="element.typeOfAnswer==insertService.SINGLESELECTION" [element]="element"></app-singleselect-insert>
+            <app-singleselect-insert *ngIf="element.typeOfAnswer == insertService.SINGLESELECTION" [element]="element"></app-singleselect-insert>
 
-            <app-value-insert *ngIf="element.typeOfAnswer==insertService.VALUEINSERT" [element]="element"></app-value-insert>
+            <app-value-insert *ngIf="element.typeOfAnswer == insertService.VALUEINSERT" [element]="element"></app-value-insert>
 
         </ng-template>
         </ul>

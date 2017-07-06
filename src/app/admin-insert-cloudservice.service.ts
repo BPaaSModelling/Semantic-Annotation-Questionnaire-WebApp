@@ -62,17 +62,14 @@ export class  InsertCSService {
     }
 
     public search(ns: string, term: string) {
-        let namespace: string = ns;
-        let searchterm: string = term;
 
-        console.log("search received: " +namespace +" :: " + searchterm);
+        console.log("search received: " + ns +" :: " + term);
 
         let search: URLSearchParams = new URLSearchParams()
-        search.set('ns', namespace);
-        search.set('search', searchterm);
+        search.set('ns', ns);
+        search.set('search', term);
         console.log('sending: ' + search.get('ns')  + ' - ' + search.get('search'));
-        this.http
-            .get(EndpointSettings.getSearchEndpoint(), { search: search })
+        this.http.get(EndpointSettings.getSearchEndpoint(), { search: search })
             .map(response => response.json()).subscribe(
 
              data => {

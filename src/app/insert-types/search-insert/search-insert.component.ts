@@ -13,14 +13,15 @@ export class SearchInsertComponent implements OnInit {
 
   private answerLabel:string;
   private answerCode:string;
-
   constructor(
-      private insertService: InsertCSService) { }
+      private insertService: InsertCSService) {
+
+  }
 
   ngOnInit() {
   }
 
-  private search(term: string):void{
+  private search(term: string): void{
     let a = this.insertService.search(this.element.searchNamespace, term);
     console.log("%%%%% " +JSON.stringify(a));
   }
