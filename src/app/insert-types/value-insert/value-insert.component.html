@@ -1,10 +1,10 @@
 <md-card-content>
 
   <md-input-container>
-    <input mdInput placeholder="Insert your value here" value="" [(ngModel)]="answerValue" required>
+    <input mdInput placeholder="Insert your value here" value="" [(ngModel)]="answerValue" (keyup)="handleOperationsSingleSelect(answerValue)" required>
   </md-input-container>
 
-  <p>Please select the comparison<br>operation of your entered value.</p>
+  <!--<p>Please select the comparison<br>operation of your entered value.</p>
   <p><md-radio-group class="radio-group">
     <div *ngFor="let cItem of element.comparisonOperationAnswer">
       <md-radio-button class="radio-button"
@@ -14,6 +14,5 @@
       </md-radio-button>
     </div>
   </md-radio-group>
-  </p>
-
+  </p><!-->
 </md-card-content>

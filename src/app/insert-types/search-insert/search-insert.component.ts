@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SearchResultModel} from '../../_models/searchresult.model';
 import {CloudServiceElementModel} from '../../_models/cloudservice-element.model';
 import {InsertCSService} from '../../admin-insert-cloudservice.service';
+import {AnswerModel} from '../../_models/answer.model';
 
 @Component({
   selector: 'app-search-insert',
@@ -9,35 +10,43 @@ import {InsertCSService} from '../../admin-insert-cloudservice.service';
   styleUrls: ['./search-insert.component.css']
 })
 export class SearchInsertComponent implements OnInit {
-  @Input() element: CloudServiceElementModel;
+  @Input() i: number;
+  @Input() insertService: InsertCSService;
+  @Input() propertyLabel: string;
+  private selectedAnswer: AnswerModel;
+  private textlabel: string;
+  private queriedIndex: number;
 
-  private answerLabel:string;
-  private answerCode:string;
   constructor(
-      private insertService: InsertCSService) {
+
+      ) {
 
   }
 
   ngOnInit() {
+    this.selectedAnswer = new AnswerModel();
+    this.selectedAnswer.answerLabel = "";
+    this.selectedAnswer.answerID = "";
+    this.insertService.csFields[this.i].givenAnswerList.push(this.selectedAnswer);
+    this.queriedIndex = -1;
+
   }
 
   private search(term: string): void{
-    let a = this.insertService.search(this.element.searchNamespace, term);
-    console.log("%%%%% " +JSON.stringify(a));
+    this.insertService.searchResults$ = null;
+    this.queriedIndex = this.i;
+    //console.log("queried index is now: " + this.queriedIndex)
+    this.insertService.search(this.insertService.csFields[this.i].searchNamespace, term);
   }
 
   private handleSearchSelect(item:SearchResultModel):void{
-    this.answerCode = item.uri;
+    //console.log("queried index is still: " + this.queriedIndex)
+    this.insertService.csFields[this.i].givenAnswerList[0].answerID = item.uri;
+    this.insertService.csFields[this.i].givenAnswerList[0].answerLabel = item.label;
     this.insertService.searchResults$ = null;
-    this.answerLabel = item.label;
+  this.queriedIndex = -1;
   }
 
-  private nextQuestion(): void {
-    Object.assign(this.element.givenAnswerList,[this.answerCode]);
-    this.answerCode = null;
-    this.answerLabel = null;
-    //this.insertService.updateQuestionnaire();
-  }
 
 }
 

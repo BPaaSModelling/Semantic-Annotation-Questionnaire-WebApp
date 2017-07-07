@@ -12,7 +12,8 @@ export class EndpointSettings {
   private static DISCOVER       : string = '/discover';
   private static DRILLDOWN      : string = '/drilldown';
   private static SEARCH         : string = '/search?';
-  private static CSELEMENTS     : string = '/cselements';
+  private static CSELEMENTS     : string = '/cloudservice/cselements';
+  private static ADDCS          : string = '/cloudservice/addcs';
 
   public static getQuestionnaireEndpoint() :string {
     return EndpointSettings.ENDPOINT + EndpointSettings.QUESTIONNAIRE;
@@ -34,5 +35,8 @@ export class EndpointSettings {
     return EndpointSettings.ENDPOINT + EndpointSettings.CSELEMENTS;
   }
 
+  public static getAddCloudServiceEndpoint() :string {
+    return EndpointSettings.ENDPOINT + EndpointSettings.ADDCS;
+  }
 
 }

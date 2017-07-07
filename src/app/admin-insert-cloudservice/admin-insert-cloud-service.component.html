@@ -1,24 +1,29 @@
 <md-sidenav-container fullscreen>
     <h2>Insert a new Cloud Service</h2>
     <br />
+
+    <md-input-container>
+        <input mdInput placeholder="Insert the name of the Cloud Service" value="" [(ngModel)]="csLabel" required>
+    </md-input-container>
+
     <div *ngFor="let domain of (insertService.domain$ | async)">
         <md-card-header>
             <div align="center"><md-card-title>{{domain}}</md-card-title></div>
         </md-card-header>
             <md-card-content>
                 <md-list>
-    <div *ngFor="let element of (insertService.csField$ | async)">
+                    <div *ngFor="let element of (insertService.csField$ | async); let i = index" [attr.data-index]="i">
         <ul>
         <div *ngIf="(domain == element.domain); then thenBlock"></div>
             <ng-template #thenBlock><md-list-item><b><li>{{element.propertyLabel}}</li></b>: </md-list-item>
 
-            <app-search-insert *ngIf="element.typeOfAnswer == insertService.SEARCHSELECTION" [element]="element"></app-search-insert>
+            <app-search-insert *ngIf="element.typeOfAnswer == insertService.SEARCHSELECTION" [i]="i" [insertService]="insertService" [propertyLabel]="element.propertyLabel"></app-search-insert>
 
-            <app-multiselect-insert *ngIf="element.typeOfAnswer == insertService.MULTISELECTION" [element]="element"></app-multiselect-insert>
+            <app-multiselect-insert *ngIf="element.typeOfAnswer == insertService.MULTISELECTION" [i]="i" [insertService]="insertService"></app-multiselect-insert>
 
-            <app-singleselect-insert *ngIf="element.typeOfAnswer == insertService.SINGLESELECTION" [element]="element"></app-singleselect-insert>
+            <app-singleselect-insert *ngIf="element.typeOfAnswer == insertService.SINGLESELECTION" [i]="i" [insertService]="insertService"></app-singleselect-insert>
 
-            <app-value-insert *ngIf="element.typeOfAnswer == insertService.VALUEINSERT" [element]="element"></app-value-insert>
+            <app-value-insert *ngIf="element.typeOfAnswer == insertService.VALUEINSERT" [i]="i" [insertService]="insertService"></app-value-insert>
 
         </ng-template>
         </ul>

@@ -17,9 +17,11 @@ import {InsertCSService} from '../admin-insert-cloudservice.service';
 export class AdminInsertCloudServiceComponent implements OnInit {
 
   public cloudService: CloudServiceModel= new CloudServiceModel();
-constructor(
-    private insertService: InsertCSService
+  private csLabel: string = "";
+  private status: string;
 
+constructor(
+   private insertService: InsertCSService
 ){
   this.insertService.queryCSModel();
   //insertService.defineDomains(insertService.cloudService);
@@ -28,4 +30,13 @@ constructor(
 
   }
 
+
+
+  public createCS(): void{
+     status = this.insertService.createCloudService(this.csLabel);
+     if (status = "OK"){
+       alert("CloudService added successfully!")
+       location.reload();
+     }
+}
 }

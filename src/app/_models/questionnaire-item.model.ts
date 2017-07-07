@@ -7,7 +7,7 @@ export class QuestionnaireItemModel {
   questionID:number;
   answerList:AnswerModel[];
   answerDatatype:string;
-  givenAnswerList:string[];
+  givenAnswerList:AnswerModel[];
   searchNamespace:string;
   comparisonOperationAnswers:AnswerModel[];
   comparisonAnswer:string;

@@ -1,11 +1,14 @@
 <md-card-content>
   <md-input-container>
-    <input mdInput placeholder="search" (keyup)="search(answerLabel)" [(ngModel)]="answerLabel" required>
+
+    <input mdInput  placeholder="type to search"  (keyup)="search(insertService.csFields[i].givenAnswerList[0].answerLabel)" [(ngModel)]="insertService.csFields[i].givenAnswerList[0].answerLabel" required>
   </md-input-container>
+  <div *ngIf="(queriedIndex == i)" flex style="overflow: scroll; height: 400px; width: 500px;" >
+
   <md-nav-list>
     <md-list-item *ngFor="let item of (insertService.searchResults$ | async)">
       <a md-line (click)="handleSearchSelect(item)">{{ item.label }}</a>
     </md-list-item>
   </md-nav-list>
-
+   </div>
 </md-card-content>

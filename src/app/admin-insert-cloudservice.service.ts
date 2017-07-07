@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Jsonp, Headers, RequestOptions} from '@angular/http';
+import {Http, Headers, RequestOptions, QueryEncoder, URLSearchParams, Jsonp} from '@angular/http';
 import {EndpointSettings} from './_settings/endpoint.settings';
 import {CloudServiceElementModel} from './_models/cloudservice-element.model';
 import {CloudServiceModel} from './_models/cloudservice.model';
@@ -10,6 +10,7 @@ import {getResponseURL} from '@angular/http/src/http_utils';
 @Injectable()
 export class  InsertCSService {
 
+    csModel: CloudServiceModel;
     csFields: CloudServiceElementModel[] = [];
     csDomain: string[] = [];
     public csField$: Observable<CloudServiceElementModel[]> = Observable.of([]);
@@ -42,7 +43,6 @@ export class  InsertCSService {
                 for (let i = 0; i< this.csFields.length; i++) {
                     if (this.csDomain.length === 0){
                         this.csDomain.push(this.csFields[0].domain);
-                        console.log(this.csDomain[0]);
                     }
                     var found_new_domain = false;
                     for (let j = 0; j < this.csDomain.length; j++ ) {
@@ -65,7 +65,7 @@ export class  InsertCSService {
 
         console.log("search received: " + ns +" :: " + term);
 
-        let search: URLSearchParams = new URLSearchParams()
+        let search: URLSearchParams = new URLSearchParams();
         search.set('ns', ns);
         search.set('search', term);
         console.log('sending: ' + search.get('ns')  + ' - ' + search.get('search'));
@@ -82,5 +82,29 @@ export class  InsertCSService {
 
     }
 
+    public modifyCSElement(csElement: CloudServiceElementModel){
+        for (let i = 0; i < this.csFields.length; i++){
+            if (csElement.propertyURI == this.csFields[i].propertyURI){
+                this.csFields[i] = csElement;
+            }
+        }
+    }
+    public createCloudService(csLabel: string): string{
+         this.csModel = new CloudServiceModel();
+         this.csModel.label = csLabel;
+         this.csModel.properties = this.csFields;
+
+let result: string ="";
+        this.http.post(EndpointSettings.getAddCloudServiceEndpoint(), JSON.stringify(this.csModel))
+            .map(response => response.json()).subscribe(
+            data => {
+                result = "OK";
+
+            }, error =>
+            result = "ERROR"
+        );
+
+        return result;
+    }
 
 }

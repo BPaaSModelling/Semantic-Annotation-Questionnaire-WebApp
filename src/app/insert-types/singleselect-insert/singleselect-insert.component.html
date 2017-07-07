@@ -1,9 +1,9 @@
 <md-card-content>
   <md-radio-group class="radio-group">
-    <div *ngFor="let aItem of element.answerList">
+    <div *ngFor="let aItem of insertService.csFields[i].answerList">
       <md-radio-button class="radio-button"
                        [value]="aItem.answerID"
-                       (click)="handleSingleSelect(aItem.answerID)">
+                       (click)="handleSingleSelect(aItem)">
         {{aItem.answerLabel}}
       </md-radio-button>
     </div>

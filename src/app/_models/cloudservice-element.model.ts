@@ -8,10 +8,11 @@ export class CloudServiceElementModel {
      propertyLabel: string;
      answerList: AnswerModel[];
      answerDatatype: string;
-     givenAnswerList: string[];
+     givenAnswerList: AnswerModel[];
      searchNamespace: string;
      comparisonOperationAnswer: AnswerModel[];
      comparisonAnswer: string;
      typeOfAnswer: string;
      domain: string;
+     annotationRelation: string;
 }
