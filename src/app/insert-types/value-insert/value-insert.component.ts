@@ -12,8 +12,10 @@ export class ValueInsertComponent implements OnInit {
   @Input() insertService: InsertCSService;
   private comparisonAnswerCode: string;
 
+
   constructor(
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,14 @@
 <md-card-content>
 
   <md-input-container>
-    <input mdInput placeholder="Insert your value here" value="" [(ngModel)]="answerValue" (keyup)="handleOperationsSingleSelect(answerValue)" required>
+    <div *ngIf="insertService.csFields[i].answerDatatype == insertService.variables.getNumericDatatypeURI(); then numericBlock else stringBlock"></div>
+    <ng-template #numericBlock>
+    <input mdInput placeholder="Insert your number here" value="" [(ngModel)]="answerValue" (keyup)="handleOperationsSingleSelect(answerValue)" type="number" required >
+    </ng-template>
+    <ng-template #stringBlock>
+      <input mdInput placeholder="Insert your value here" value="" [(ngModel)]="answerValue" (keyup)="handleOperationsSingleSelect(answerValue)" required >
+    </ng-template>
+
   </md-input-container>
 
   <!--<p>Please select the comparison<br>operation of your entered value.</p>

@@ -6,6 +6,7 @@ import {CloudServiceModel} from './_models/cloudservice.model';
 import {Observable} from 'rxjs/Observable';
 import {SearchResultModel} from './_models/searchresult.model';
 import {getResponseURL} from '@angular/http/src/http_utils';
+import {VariableSettings} from './_settings/variable.settings';
 
 @Injectable()
 export class  InsertCSService {
@@ -17,17 +18,14 @@ export class  InsertCSService {
     public domain$: Observable<string[]> = Observable.of([]);
     searchResults$: Observable<SearchResultModel[]> = Observable.of([]);
     private options: RequestOptions;
-
-    private SINGLESELECTION     : string = 'http://ikm-group.ch/archiMEO/questionnaire#SingleSelection';
-    private SEARCHSELECTION  : string = 'http://ikm-group.ch/archiMEO/questionnaire#SearchSelection';
-    private VALUEINSERT         : string = 'http://ikm-group.ch/archiMEO/questionnaire#ValueInsert';
-    private MULTISELECTION      : string = 'http://ikm-group.ch/archiMEO/questionnaire#MultiSelection'
+    private variables: VariableSettings;
 
     constructor(
         private http: Http,
         private jsonp: Jsonp) {
         const headers = new Headers({ 'Content-Type': 'application/json' });
         this.options = new RequestOptions({ headers: headers });
+        this.variables = new VariableSettings;
     }
 
     queryCSModel(): void {
