@@ -9,6 +9,7 @@ import { QuestionnaireItemModel} from './_models/questionnaire-item.model';
 import {ServiceModel} from "./_models/service.model";
 import 'rxjs/add/operator/toPromise';
 import {SearchResultModel} from "./_models/searchresult.model";
+import 'rxjs/add/observable/throw';
 
 
 @Injectable()
