@@ -2,29 +2,54 @@
     <h2>Insert a new Cloud Service</h2>
     <br />
 
-    <!-- Here i insert a static domain -->
-
+    <!-- Here i insert a static domain (general) -->
         <md-card-header>
-            <div align="center"><md-card-title>General</md-card-title></div>
+            <div align="center"><md-card-title>{{specific_domain}}</md-card-title></div>
+
+                    <md-list>
+                        <!-- Here i insert a static field (the name of the cloudservice) -->
+                        <md-card-content>
+                            <md-list>
+                                <ul>
+                                    <md-list-item><b><li>Name of the new Cloud Service:</li></b></md-list-item>
+                                    <md-input-container>
+                                        <input mdInput placeholder="Insert the name of the Cloud Service" value="" [(ngModel)]="csLabel" required>
+                                    </md-input-container>
+                                </ul>
+                            </md-list>
+                        </md-card-content>
+
+                        <!-- Here I iterate all the elements and i print out the ones with "General" domain -->
+                        <div *ngFor="let element of (insertService.csField$ | async); let i = index" [attr.data-index]="i">
+
+                            <ul>
+                                <div *ngIf="(element.domain == specific_domain); then thenBlock"></div>
+                                <ng-template #thenBlock><md-list-item><b><li>{{element.propertyLabel}}</li></b>: </md-list-item>
+
+                                    <app-search-insert *ngIf="element.typeOfAnswer == insertService.variables.getSearchURI()" [i]="i" [insertService]="insertService" [propertyLabel]="element.propertyLabel"></app-search-insert>
+
+                                    <app-multiselect-insert *ngIf="element.typeOfAnswer == insertService.variables.getMultiSelectionURI()" [i]="i" [insertService]="insertService"></app-multiselect-insert>
+
+                                    <app-singleselect-insert *ngIf="element.typeOfAnswer == insertService.variables.getSingleSelectionURI()" [i]="i" [insertService]="insertService"></app-singleselect-insert>
+
+                                    <app-value-insert *ngIf="element.typeOfAnswer == insertService.variables.getValueInsertURI()" [i]="i" [insertService]="insertService"></app-value-insert>
+
+                                </ng-template>
+                            </ul>
+                        </div><!-- End elements iteration) -->
+                    </md-list>
         </md-card-header>
 
-        <!-- Here i insert a static field (the name of the cloudservice) -->
-    <md-card-content>
-        <md-list>
-            <ul>
-                <md-list-item><b><li>Name of the new Cloud Service:</li></b></md-list-item>
-                <md-input-container>
-                    <input mdInput placeholder="Insert the name of the Cloud Service" value="" [(ngModel)]="csLabel" required>
-                </md-input-container>
-            </ul>
-        </md-list>
-    </md-card-content>
+
     <hr />
 
     <!-- Here starts the print out of dynamic fields) -->
+    <!-- I start to find all the fields under "general" domain -->
 
-    <!-- Here I iterate all the domains (categories of fields) -->
+
+    <!-- Here I iterate all the domains (categories of fields) and I exlude the domain "General" -->
     <div *ngFor="let domain of (insertService.domain$ | async)">
+        <div *ngIf="domain != specific_domain">
         <md-card-header>
             <div align="center"><md-card-title>{{domain}}</md-card-title></div>
         </md-card-header>
@@ -52,6 +77,7 @@
         </md-card-content>
         <br />
         <hr />
+        </div><!-- End if domain is not "General" -->
     </div><!-- End domains iteration -->
     <br />
     <br />

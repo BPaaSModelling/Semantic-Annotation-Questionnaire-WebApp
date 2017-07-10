@@ -1,7 +1,7 @@
 <md-card-content>
   <md-input-container>
 
-    <input mdInput  placeholder="type to search"  (keyup)="search(insertService.csFields[i].givenAnswerList[0].answerLabel)" [(ngModel)]="insertService.csFields[i].givenAnswerList[0].answerLabel" required>
+    <input mdInput  placeholder="type to search"  (keyup)="search(insertService.csFields[i].givenAnswerList[0].answerLabel, i)" [(ngModel)]="insertService.csFields[i].givenAnswerList[0].answerLabel" required>
   </md-input-container>
   <div *ngIf="(queriedIndex == i)" flex style="overflow: scroll; height: 400px; width: 500px;" >
 

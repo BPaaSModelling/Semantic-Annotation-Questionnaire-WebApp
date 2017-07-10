@@ -19,7 +19,7 @@ export class AdminInsertCloudServiceComponent implements OnInit {
   public cloudService: CloudServiceModel= new CloudServiceModel();
   private csLabel: string = "";
   private status: string;
-
+  private specific_domain = "General";
 constructor(
    private insertService: InsertCSService
 ){
