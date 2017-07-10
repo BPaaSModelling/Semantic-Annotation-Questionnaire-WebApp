@@ -30,7 +30,7 @@ export class  InsertCSService {
 
     queryCSModel(): void {
 
-        this.http.get(EndpointSettings.getCloudServiceElementsEndpoint(), null)
+        this.http.get(EndpointSettings.getCloudServiceElementsEndpoint())
             .map(response => response.json()).subscribe(
             data => {
                 console.log('CloudServices received: ' + JSON.stringify(data));

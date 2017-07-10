@@ -41,7 +41,7 @@ export class QuestionnaireService {
   private queryQuestionnaire(content:QuestionnaireModel): void {
     //commented for development purpose
     this.queryServices(content);
-    this.http.post(EndpointSettings.getQuestionnaireEndpoint(), null, JSON.stringify(content))
+    this.http.post(EndpointSettings.getQuestionnaireEndpoint(), JSON.stringify(content))
       .map(response => response.json()).subscribe(
         data => {
 
@@ -55,7 +55,7 @@ export class QuestionnaireService {
   }
 
   private queryServices(content:QuestionnaireModel): void {
-    this.http.post(EndpointSettings.getServiceDiscoveryEndpoint(), null, JSON.stringify(content))
+    this.http.post(EndpointSettings.getServiceDiscoveryEndpoint(), JSON.stringify(content))
       .map(response => response.json()).subscribe(
       data => {
 
