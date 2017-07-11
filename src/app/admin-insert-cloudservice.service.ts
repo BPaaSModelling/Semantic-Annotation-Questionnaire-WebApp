@@ -3,7 +3,8 @@ import {Http, Headers, RequestOptions, QueryEncoder, URLSearchParams, Jsonp} fro
 import {EndpointSettings} from './_settings/endpoint.settings';
 import {CloudServiceElementModel} from './_models/cloudservice-element.model';
 import {CloudServiceModel} from './_models/cloudservice.model';
-import {Observable} from 'rxjs/Observable';
+//import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import {SearchResultModel} from './_models/searchresult.model';
 import {getResponseURL} from '@angular/http/src/http_utils';
 import {VariableSettings} from './_settings/variable.settings';
