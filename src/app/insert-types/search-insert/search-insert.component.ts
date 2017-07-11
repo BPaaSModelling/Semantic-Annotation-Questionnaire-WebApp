@@ -16,7 +16,7 @@ export class SearchInsertComponent implements OnInit {
   private selectedAnswer: AnswerModel;
   private textlabel: string;
   private queriedIndex: number;
-
+  private answerList;
   constructor(
 
       ) {
@@ -29,12 +29,12 @@ export class SearchInsertComponent implements OnInit {
     this.selectedAnswer.answerID = "";
     this.insertService.csFields[this.i].givenAnswerList.push(this.selectedAnswer);
     this.queriedIndex = -1;
-
+  this.answerList = null;
   }
 
   private search(term: string, index: number): void{
 
-    console.log('ecco l index: '+ index);
+
     this.insertService.searchResults$ = null;
     this.queriedIndex = this.i;
     //console.log("queried index is now: " + this.queriedIndex)
