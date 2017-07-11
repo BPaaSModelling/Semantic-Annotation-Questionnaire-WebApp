@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {Http, Headers, Response, RequestOptions, URLSearchParams, Jsonp} from '@angular/http';
 import { EndpointSettings } from './_settings/endpoint.settings';
