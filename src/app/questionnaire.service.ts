@@ -91,13 +91,13 @@ export class QuestionnaireService {
      this.queryQuestionnaire(this.questionnaireSource);
    }
 
-  public search(ns: string, term: string) {
+  public search(ns: string, term: string, classes: boolean) {
 
-    console.log("search received: " +ns +" :: " + term);
-
+    console.log("search received: " +ns +" :: " + term + " :: " + classes);
     let search = new URLSearchParams()
     search.set('ns', ns);
     search.set('search', term);
+    search.set('search_for_classes', classes.toString());
 
     this.http.get(EndpointSettings.getSearchEndpoint(), { search })
       .map(response => response.json()).subscribe(

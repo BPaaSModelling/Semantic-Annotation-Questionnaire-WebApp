@@ -62,7 +62,7 @@
                         <div *ngIf="(domain == element.domain); then thenBlock"></div>
                         <ng-template #thenBlock><md-list-item><b><li>{{element.propertyLabel}}</li></b>: </md-list-item>
 
-                            <app-search-insert *ngIf="element.typeOfAnswer == insertService.variables.getSearchURI()SEARCHSELECTION " [i]="i" [insertService]="insertService" [propertyLabel]="element.propertyLabel"></app-search-insert>
+                            <app-search-insert *ngIf="element.typeOfAnswer == insertService.variables.getSearchURI() "[i]="i" [insertService]="insertService" [propertyLabel]="element.propertyLabel">{{i}}</app-search-insert>
 
                             <app-multiselect-insert *ngIf="element.typeOfAnswer == insertService.variables.getMultiSelectionURI()" [i]="i" [insertService]="insertService"></app-multiselect-insert>
 

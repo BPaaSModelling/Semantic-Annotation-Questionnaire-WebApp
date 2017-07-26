@@ -11,4 +11,5 @@ export class QuestionnaireItemModel {
   searchNamespace:string;
   comparisonOperationAnswers:AnswerModel[];
   comparisonAnswer:string;
+  searchOnClassesInsteadOfInstances: boolean;
 }

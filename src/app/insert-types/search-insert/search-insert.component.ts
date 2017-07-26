@@ -32,13 +32,13 @@ export class SearchInsertComponent implements OnInit {
   this.answerList = null;
   }
 
-  private search(term: string, index: number): void{
+  private search(term: string, index: number): void {
 
 
     this.insertService.searchResults$ = null;
     this.queriedIndex = this.i;
     //console.log("queried index is now: " + this.queriedIndex)
-    this.insertService.search(this.insertService.csFields[this.i].searchNamespace, term);
+    this.insertService.search(this.insertService.csFields[this.i].searchNamespace, term, this.insertService.csFields[this.i].searchOnClassesInsteadOfInstances);
   }
 
   private handleSearchSelect(item:SearchResultModel):void{

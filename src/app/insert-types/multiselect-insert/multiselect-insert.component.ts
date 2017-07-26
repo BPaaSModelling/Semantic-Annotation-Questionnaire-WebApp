@@ -34,10 +34,10 @@ export class MultiselectInsertComponent implements OnInit {
         }
       }
       if (found){
-        //console.log('removed ' + this.selectedAnswer.answerLabel);
+        console.log('removed ' + this.selectedAnswer.answerLabel);
         this.answers.splice(index_found,1);
       } else {
-        //console.log('added ' + this.selectedAnswer.answerLabel);
+        console.log('added ' + this.selectedAnswer.answerLabel);
         this.answers.push(this.selectedAnswer);
       }
     }

@@ -15,4 +15,5 @@ export class CloudServiceElementModel {
      typeOfAnswer: string;
      domain: string;
      annotationRelation: string;
+     searchOnClassesInsteadOfInstances: boolean;
 }
