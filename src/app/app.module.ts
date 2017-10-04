@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { JsonpModule } from '@angular/http';
 
 import {
-  MaterialModule, MdToolbarModule, MdButtonModule, MdCardModule, MdSidenavModule,
+  MdToolbarModule, MdButtonModule, MdCardModule, MdSidenavModule,
   MdInputModule, MdRadioModule, MdListModule, MdCheckboxModule
 } from '@angular/material';
 
